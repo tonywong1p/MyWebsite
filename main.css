@@ -1,0 +1,28 @@
+[v-cloak] {
+    display: none
+}
+
+#cover {
+    background-image: url("./image/cover.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    padding-top: 60px
+}
+
+#cover-photo {
+    height: 100px;
+    width: 100px
+}
+
+.font1 {
+    font-family: 'Skranji', cursive;
+}
+
+.font2 {
+    font-family: 'Dosis', sans-serif;
+}
+
+.font3 {
+    font-family: 'Pacifico', cursive;
+}
