@@ -1,5 +1,5 @@
 <template>
-  <v-card class="grey lighten-3">
+  <v-card class="grey lighten-3 animated fadeIn">
     <div class="gradient darken-1">
       <v-layout wrap style="position:relative;top:30px">
         <v-flex xs12 d-flex justify-center align-center>
@@ -14,7 +14,7 @@
         <v-flex xs12 md6 class="mt-2">
           <h3 class="headline">Experience</h3>
           <v-timeline dense>
-            <v-timeline-item v-for="experience in experiences" :key="experience" left small color="orange lighten-2">
+            <v-timeline-item v-for="experience in experiences" :key="experience.id" left small color="orange lighten-2">
               <v-card class="elevation-2 mr-3">
                 <v-card-title>
                   <div>
@@ -32,7 +32,7 @@
         <v-flex xs12 md6 class="mt-2">
           <h3 class="headline">Education</h3>
           <v-timeline dense>
-            <v-timeline-item v-for="education in educations" :key="education" left small color="orange lighten-2">
+            <v-timeline-item v-for="education in educations" :key="education.id" left small color="orange lighten-2">
               <v-card class="elevation-2 mr-3">
                 <v-card-title>
                   <div>
