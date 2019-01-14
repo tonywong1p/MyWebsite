@@ -12,25 +12,57 @@
     <v-card-title>
       <v-layout wrap>
         <v-flex xs12 class="mb-3">
-          <v-btn v-for="filter in filters" :key="filter" small :dark="selectedFilter==filter" :class="{'blue':selectedFilter==filter}" @click="selectedFilter = filter">{{filter}}</v-btn>
+          <v-btn v-for="(filter,index) in filters" :key="index" small :dark="selectedFilter==index" :class="{'blue':selectedFilter==index}" @click="selectedFilter = index">{{filter}}</v-btn>
         </v-flex>
-        <v-flex xs12 sm4 class="pa-3" v-for="item in filteredItems" :key="item.link" @click="popUp(item)" style="cursor:pointer">
-          <v-img class="thumbnail" :src="item.thumbnail"></v-img>
-          <div class="mt-2">
-            <h3 style="text-align:center">{{item.caption}}</h3>
-            <h3 style="text-align:center" class="caption grey--text">{{item.type}}</h3>
-          </div>
+        <v-flex xs12 sm6 md4 class="pa-3" v-for="item in filteredItems" :key="item.link">
+          <v-hover>
+            <v-img slot-scope="{ hover }" :class="`elevation-${hover ? 6 : 1}`" class="thumbnail" :src="item.thumbnail" :aspect-ratio="16/9" @click="open(item)" style="cursor:pointer"></v-img>
+          </v-hover>
+          <v-layout class="mt-2" column align-center>
+            <h3 style="text-align:center">{{item.title}}</h3>
+            <v-layout align-center>
+              <v-icon v-if="item.type!='image'" size="20" class="mr-1 grey--text">launch</v-icon>
+              <v-icon v-if="item.type=='image'" size="20" class="mr-1 grey--text">collections</v-icon>
+              <span style="text-align:center" class="caption grey--text">{{item.caption}}</span>
+            </v-layout>
+          </v-layout>
         </v-flex>
-        <v-dialog v-model="dialog" :fullscreen="true" persistent>
-          <div style="height:100%;width:100%; background: rgba(0, 0, 0, 0.5);position:absolute"></div>
-          <v-img :src="selectedItem.thumbnail" :contain="true" height="100%">
-            <v-layout row>
+        <v-dialog v-model="dialog" :width="1000" :max-width="1500" height="2000" persistent scrollable>
+          <v-card class="grey darken-4">
+            <v-toolbar class="grey darken-4">
+              <div v-if="zoomedImage==null" class="hidden-xs-only">
+                <v-btn v-for="i in [2,3,4]" small depressed icon @click="itemPerPage=i" :key="i" class="pa-0 yellow" :class="{'grey':itemPerPage!=i}">{{i}}</v-btn>
+              </div>
+              <div v-if="zoomedImage!=null">
+                <v-btn fab small @click="zoomedImage=null">
+                  <v-icon>arrow_back</v-icon>
+                </v-btn>
+              </div>
               <v-spacer></v-spacer>
-              <v-btn icon color="grey" @click="dialog=false" class="ma-4">
+              <v-btn icon @click="closeDialog()" dark>
                 <v-icon>clear</v-icon>
               </v-btn>
-            </v-layout>
-          </v-img>
+            </v-toolbar>
+            <v-card-text style="max-height:700px;" class="scrollbar">
+              <div class="hidden-xs-only">
+                <carousel ref="carousel" v-show="zoomedImage==null" :perPageCustom="[[0, itemPerPage]]">
+                  <slide v-for="(image,i) in selectedItem.value" :key="i" style="height:580px">
+                    <v-img :src="image" contain class="mx-2" style="height:580px">
+                      <v-btn fab small absolute @click="zoomedImage=image">
+                        <v-icon>zoom_in</v-icon>
+                      </v-btn>
+                    </v-img>
+                  </slide>
+                </carousel>
+                <div v-if="zoomedImage!=null">
+                  <v-img :src="zoomedImage" style="height:100%"></v-img>
+                </div>
+              </div>
+              <div class="hidden-sm-and-up">
+                <v-img v-for="(image,i) in selectedItem.value" :key="i" :src="image" contain class="mb-4" :max-height="400"></v-img>
+              </div>
+            </v-card-text>
+          </v-card>
         </v-dialog>
       </v-layout>
     </v-card-title>
@@ -41,43 +73,136 @@
   export default {
     data() {
       return {
+        zoomedImage: null,
+        itemPerPage: 2,
         dialog: false,
-        selectedFilter: 'All',
+        selectedFilter: 0,
         selectedItem: {},
-        filters: ['All', 'Web apps' ,'Website', 'UI/UX Design', 'Graphic'],
+        filters: ['All', 'Project Management', 'Web Development', 'Graphic Design'],
         items: [{
-          type: 'Web apps',
-          caption: 'Social Platform',
-          thumbnail: require('@/assets/sayyo.png'),
-          link: 'http://sayyo.tonywsf.com',
-        }, {
-          type: 'Website',
-          caption: 'Company Website',
-          thumbnail: require('@/assets/edvant.png'),
-          link: 'http://edvant.net',
-        }]
+            filter: 1,
+            title: 'Trello - Software Developmenet',
+            caption: 'Project Management',
+            thumbnail: require('@/assets/trello.png'),
+            type: 'web',
+            value: 'https://trello.com/b/9JXMPGmx/application-development-demo'
+          }, {
+            filter: 2,
+            title: 'SayYo - Social Platform',
+            caption: 'Web application',
+            thumbnail: require('@/assets/sayyo.png'),
+            type: 'web',
+            value: 'http://sayyo.tonywsf.com'
+          }, {
+            filter: 2,
+            title: 'Edvant - Company Website',
+            caption: 'Static website',
+            thumbnail: require('@/assets/edvant.png'),
+            type: 'web',
+            value: 'http://edvant.net'
+          }, {
+            filter: 2,
+            title: 'Fact Checker - Online Platform',
+            caption: 'Web application',
+            thumbnail: require('@/assets/factchecker.png'),
+            type: 'web',
+            value: 'http://factchecker.tonywsf.com'
+          },
+          {
+            filter: 2,
+            title: 'Evaluate - Product Website',
+            caption: 'Static website',
+            thumbnail: require('@/assets/evaluate.png'),
+            type: 'web',
+            value: 'http://evaluate.edvant.net'
+          },
+          {
+            filter: 3,
+            title: 'MarineBio - Mobile app',
+            caption: 'Graphic + UI/UX Design',
+            thumbnail: require('@/assets/marine_icon.png'),
+            type: 'image',
+            value: [
+              require('@/assets/marine_screenshot_1.jpg'),
+              require('@/assets/marine_screenshot_2.jpg'),
+              require('@/assets/marine_screenshot_3.jpg'),
+              require('@/assets/marine_app_1.jpg'),
+              require('@/assets/marine_app_2.jpg'),
+              require('@/assets/marine_app_3.jpg'),
+              require('@/assets/marine_app_4.jpg'),
+              require('@/assets/marine_app_5.jpg'),
+              require('@/assets/marine_app_6.jpg'),
+              require('@/assets/marine_app_7.jpg'),
+              require('@/assets/marine_app_8.jpg'),
+              require('@/assets/marine_app_9.jpg'),
+              require('@/assets/marine_app_10.jpg'),
+              require('@/assets/marine_app_11.jpg'),
+              require('@/assets/marine_icon.png'),
+            ]
+          }, {
+            filter: 3,
+            title: 'Science Mobile - Mobile app',
+            caption: 'Graphic + UI/UX Design',
+            thumbnail: require('@/assets/science_icon.png'),
+            type: 'image',
+            value: [
+              require('@/assets/science_screenshot_1.jpg'),
+              require('@/assets/science_screenshot_2.jpg'),
+              require('@/assets/science_screenshot_3.jpg'),
+              require('@/assets/science_app_1.jpg'),
+              require('@/assets/science_app_2.jpg'),
+              require('@/assets/science_app_3.jpg'),
+              require('@/assets/science_app_4.jpg'),
+              require('@/assets/science_app_5.jpg'),
+              require('@/assets/science_app_6.jpg'),
+              require('@/assets/science_app_7.jpg'),
+              require('@/assets/science_app_8.jpg'),
+              require('@/assets/science_icon.png'),
+              require('@/assets/science_cover.jpg'),
+            ]
+          }, {
+            filter: 3,
+            title: 'Evaluate - Admin Panel',
+            caption: 'UI/UX Design',
+            thumbnail: require('@/assets/evaluate_admin_2.jpg'),
+            type: 'image',
+            value: [
+              require('@/assets/evaluate_admin_1.jpg'),
+              require('@/assets/evaluate_admin_2.jpg'),
+              require('@/assets/evaluate_admin_3.jpg'),
+              require('@/assets/evaluate_admin_4.jpg'),
+              require('@/assets/evaluate_admin_5.jpg'),
+            ]
+          },
+        ]
       }
     },
     computed: {
       filteredItems: function() {
         let temp = [];
-        if (this.selectedFilter == 'All') {
+        if (this.selectedFilter == 0) {
           temp = this.items
         } else {
           temp = this.items.filter((item) => {
-            return item.type == this.selectedFilter
+            return item.filter == this.selectedFilter
           })
         }
         return temp;
       }
     },
     methods: {
-      popUp(item) {
-        this.selectedItem = item;
-        if (item.type == 'Web apps' || item.type == 'Website') {
-          window.open(item.link, '_blank');
-        } else {
-          this.dialog = true
+      closeDialog() {
+        this.zoomedImage = null;
+        this.$refs.carousel.goToPage(0);
+        this.dialog = false;
+      },
+      open(item) {
+        if (item.type == 'web') {
+          window.open(item.value, '_blank');
+        }
+        if (item.type == 'image') {
+          this.dialog = true;
+          this.selectedItem = item;
         }
       }
     }
@@ -85,22 +210,36 @@
 </script>
 
 <style scoped>
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: none;
+  }
+  
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+    background: none;
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ffab00;
+  }
+  
+  .v-card {
+    border-radius: 5px;
+  }
+  
   .v-btn {
     text-transform: capitalize;
   }
   
   .dialog {
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 3
+    z-index: 3;
   }
   
   .thumbnail {
-    height:200px;
-    opacity: 0.5;
-    transition-duration: .5s
-  }
-  
-  .thumbnail:hover {
-    opacity: 1;
+    height: 200px;
+    transition-duration: 0.5s;
   }
 </style>

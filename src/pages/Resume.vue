@@ -22,9 +22,9 @@
                     <span class="grey--text"><span class="blue--text">{{experience.year}}</span> <span class="mx-1">|</span>{{experience.company}}</span>
                   </div>
                 </v-card-title>
-                <v-card-text>
-                  {{experience.duties}}
-                </v-card-text>
+                <ul class="mx-2 pb-4">
+                  <li v-for="(duty,index) in experience.duties" :key="index">{{duty}}</li>
+                </ul>
               </v-card>
             </v-timeline-item>
           </v-timeline>
@@ -32,17 +32,19 @@
         <v-flex xs12 md6 class="mt-2">
           <h3 class="headline">Education</h3>
           <v-timeline dense>
-            <v-timeline-item v-for="education in educations" :key="education.id" left small color="orange lighten-2">
+            <v-timeline-item v-for="(education,index) in educations" :key="index" left small color="orange lighten-2">
               <v-card class="elevation-2 mr-3">
                 <v-card-title>
                   <div>
-                    <span class="title mb-1">{{education.title}}</span><br>
+                    <span class="title mb-1" v-if="index!=2">{{education.title}}</span>
+                    <a class="title mb-1" v-if="index==2" href="https://www.freecodecamp.org/certification/tonywong1p/javascript-algorithms-and-data-structures" target="_blank">{{education.title}}</a>
+                    <br>
                     <span class="grey--text"><span class="blue--text">{{education.year}}</span> <span class="mx-1">|</span>{{education.institution}}</span>
                   </div>
                 </v-card-title>
-                <v-card-text>
-                  {{education.courses}}
-                </v-card-text>
+                <ul class="ml-2 pb-4">
+                  <li v-for="(course,index) in education.courses" :key="index">{{course}}</li>
+                </ul>
               </v-card>
             </v-timeline-item>
           </v-timeline>
@@ -57,28 +59,49 @@
     data() {
       return {
         experiences: [{
-            title: 'IT Project Manager',
+            title: 'Co-founder and IT Project Manager',
             company: 'Edvant Company Limited',
-            year: 'June 2015 to Dec 2018',
-            duties: ['fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg', 'fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg', 'fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg']
+            year: 'Jun. 2015 to Dec. 2018',
+            duties: ['Managed 6 IT projects under the scope of campus-wide usage in local and south-Asian universities by cooperating with high-profile administrators.',
+             'Achieved 1.8+ million sales revenue over 2 years by selling cloud-based solutions and tailor-made software services.', 
+             'Designed and developed front-end interfaces of 5 web applications for actual production.']
           },
           {
             title: 'Research Assistant',
             company: 'Chinese University of Hong Kong',
-            year: '2015',
-            duties: ['fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg', 'fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg', 'fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg fghsfgdfg']
+            year: 'Dec. 2014 to May 2015',
+            duties: ['Created a hardware prototype of single-board server having local Wi-Fi network and tested using it to support the usage of web applications in internet-isolated environment.',
+             'Investigated network control technique by using local DNS, iptables, and proxy server.', ]
+          },
+          {
+            title: 'Co-founder and Tutor',
+            company: 'Y&F Tutorial Center',
+            year: 'Sept. 2013 to Jun. 2016',
+            duties: ['Supervised 100+ students aging from primary to secondary school in acquiring better understanding of targeted weak areas within the subject.',
+             'Executed promotion campaigns to improve business exposure and admission rate by over 80%.'
+             ]
           }
         ],
         educations: [{
           title: 'MSc in Information and Technology Management',
           institution: 'Chinese University of Hong Kong',
-          year: '2015',
-          courses: ['fghsfgdfg', 'fghsfgdfg']
+          year: 'Sept. 2017 - Mar. 2019',
+          courses: ['Honored with First Class Division', 'Cumulative GPA: 3.344/4']
         }, {
           title: 'BEng in Electronic Engineering',
           institution: 'Chinese University of Hong Kong',
-          year: '2015',
-          courses: ['fghsfgdfg', 'fghsfgdfg']
+          year: 'Sept. 2011 - Jul. 2015',
+          courses: ['Honored with Third Class Division', 
+          'Final Year Project: Depth reconstruction from several 2D images',
+          'Major GPA: 2.452/4 | Cumulative GPA: 2.114/4'
+
+          ]
+        }, {
+          title: 'Developer Certification, JavaScript Algorithms and Data Structures',
+          institution: 'FreeCodeCamp.org',
+          year: 'Jun. 29, 2018',
+          courses: ['Representing approximately 300 hours of course work',
+          'Intermediate Algorithm Scripting, Functional Programming, Object Oriented Programming...']
         }]
       }
     }
