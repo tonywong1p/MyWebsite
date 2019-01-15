@@ -23,7 +23,7 @@
           },
           scale: {
             pointLabels: {
-              fontSize: 15,
+              fontSize: 13,
             },
             ticks: {
               suggestedMin: 0,
@@ -31,9 +31,9 @@
               stepSize: 1,
               fontSize: 0
             }
-          }
-          // responsive: true,
-          // maintainAspectRatio: false
+          },
+          responsive: true,
+          maintainAspectRatio: false
         }
       }
     },

@@ -9,13 +9,18 @@
         </v-flex>
       </v-layout>
     </div>
-    <v-card-title>
+    <v-card-title class="px-0 pt-0">
       <v-layout wrap>
         <v-flex xs12 class="mb-2">
-          <v-btn v-for="(filter,index) in filters" :key="index" small :dark="selectedFilter==index" :class="{'blue':selectedFilter==index}" @click="selectedFilter = index">{{filter}}</v-btn>
+          <v-tabs fixed-tabs show-arrows>
+            <v-tab v-for="(filter,index) in filters" :key="index" @click="selectedFilter = index">
+              {{filter}}
+            </v-tab>
+          </v-tabs>
+          <!-- <v-btn v-for="(filter,index) in filters" :key="index" small :dark="selectedFilter==index" :class="{'blue':selectedFilter==index}" @click="selectedFilter = index">{{filter}}</v-btn> -->
         </v-flex>
         <v-flex xs12 sm6 lg4 class="pa-4" v-for="item in filteredItems" :key="item.link">
-          <v-hover>
+          <v-hover class="grey darken-2">
             <v-img slot-scope="{ hover }" :class="`elevation-${hover ? 6 : 1}`" class="thumbnail" :src="item.thumbnail" :aspect-ratio="16/9" @click="open(item)" style="cursor:pointer"></v-img>
           </v-hover>
           <v-layout class="mt-2" column align-center>
@@ -31,8 +36,8 @@
           <v-card class="grey darken-4">
             <v-toolbar class="grey darken-4">
               <!-- <div v-if="zoomedImage==null" class="hidden-xs-only">
-                      <v-btn v-for="i in [2,3,4]" small depressed icon @click="itemPerPage=i" :key="i" class="pa-0 yellow" :class="{'grey':itemPerPage!=i}">{{i}}</v-btn>
-                    </div> -->
+                        <v-btn v-for="i in [2,3,4]" small depressed icon @click="itemPerPage=i" :key="i" class="pa-0 yellow" :class="{'grey':itemPerPage!=i}">{{i}}</v-btn>
+                      </div> -->
               <v-slider class="hidden-xs-only mt-3" prepend-icon="zoom_in" v-model="imageSize" v-if="zoomedImage==null" dark :min="50" :max="380"></v-slider>
               <div v-if="zoomedImage!=null">
                 <v-btn icon dark @click="zoomedImage=null">
@@ -226,6 +231,7 @@
         if (item.type == 'image') {
           this.dialog = true;
           this.selectedItem = item;
+          this.$redrawVueMasonry()
         }
       }
     }

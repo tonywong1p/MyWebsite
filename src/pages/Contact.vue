@@ -9,12 +9,12 @@
         </v-flex>
       </v-layout>
     </div>
-    <v-card-title class="px-5">
+    <v-card-title class="px-0">
       <v-layout wrap>
-        <v-flex xs12 md6 class="mt-2">
-              <h3 class="headline">Keep in <span class="blue--text">Touch</span></h3>
-          <iframe height="200" frameborder="0" style="width:100%" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA3_kQiSHZMWXVyf4beMIqhdXExt-CvKA0
-              &q=Hong+Kong" allowfullscreen></iframe>
+        <v-flex xs12 md6 class="mt-2 px-4">
+          <h3 class="headline mb-2">Keep in <span class="blue--text">Touch</span></h3>
+          <iframe height="250" frameborder="0" style="width:100%" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA3_kQiSHZMWXVyf4beMIqhdXExt-CvKA0
+                    &q=Hong+Kong" allowfullscreen></iframe>
           <v-list class="transparent">
             <v-list-tile avatar v-for="item in items" :key="item.id">
               <v-list-tile-avatar>
@@ -23,6 +23,15 @@
               <v-list-tile-content>{{item.value}}</v-list-tile-content>
             </v-list-tile>
           </v-list>
+        </v-flex>
+        <v-flex xs12 md6 class="mt-2 px-4">
+          <h3 class="headline mb-2">Contact <span class="blue--text">Me</span></h3>
+          <form action="mailto:tonywong1p89@gmail.com" method="post" enctype="text/plain">
+            <v-text-field box prepend-icon="face" label="Full Name" type="text" name="fullname" required></v-text-field>
+            <v-text-field box prepend-icon="email" label="Email" type="email" name="email" required></v-text-field>
+            <v-textarea box label="Default style" prepend-icon="message" name="message"></v-textarea>
+            <v-btn type="submit">Send Message</v-btn>
+          </form>
         </v-flex>
       </v-layout>
     </v-card-title>
@@ -47,7 +56,7 @@
           },
           {
             icon: "email",
-            value: "tonywong1p@msn.com"
+            value: "tonywong1p89@gmail.com"
           }
         ]
       }

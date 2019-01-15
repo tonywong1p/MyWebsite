@@ -13,7 +13,7 @@
       <v-layout wrap>
         <v-flex xs12 lg6 class="mt-2">
           <h3 class="headline">Experience</h3>
-          <v-timeline dense>
+          <v-timeline dense class="hidden-xs-only">
             <v-timeline-item v-for="experience in experiences" :key="experience.id" left small color="orange lighten-2">
               <v-card class="elevation-2 mr-3">
                 <v-card-title>
@@ -28,10 +28,23 @@
               </v-card>
             </v-timeline-item>
           </v-timeline>
+          <v-timeline dense align-top class="hidden-sm-and-up">
+            <v-timeline-item v-for="experience in experiences" :key="experience.id" left small color="orange lighten-2">
+              <v-layout column>
+                <div>
+                  <span class="title mb-1">{{experience.title}}</span><br>
+                  <span class="grey--text"><span class="blue--text">{{experience.year}}</span> <span class="mx-1">|</span>{{experience.company}}</span>
+                </div>
+                <ul class="mx-2 pb-4">
+                  <li v-for="(duty,index) in experience.duties" :key="index">{{duty}}</li>
+                </ul>
+              </v-layout>
+            </v-timeline-item>
+          </v-timeline>
         </v-flex>
         <v-flex xs12 lg6 class="mt-2">
           <h3 class="headline">Education</h3>
-          <v-timeline dense>
+          <v-timeline dense class="hidden-xs-only">
             <v-timeline-item v-for="(education,index) in educations" :key="index" left small color="orange lighten-2">
               <v-card class="elevation-2 mr-3">
                 <v-card-title>
@@ -48,23 +61,36 @@
               </v-card>
             </v-timeline-item>
           </v-timeline>
+          <v-timeline dense align-top class="hidden-sm-and-up">
+            <v-timeline-item v-for="education in educations" :key="education.id" left small color="orange lighten-2">
+              <v-layout column>
+                <div>
+                  <span class="title mb-1">{{education.title}}</span><br>
+                  <span class="grey--text"><span class="blue--text">{{education.year}}</span> <span class="mx-1">|</span>{{education.company}}</span>
+                </div>
+                <ul class="mx-2 pb-4">
+                  <li v-for="(course,index) in education.courses" :key="index">{{course}}</li>
+                </ul>
+              </v-layout>
+            </v-timeline-item>
+          </v-timeline>
         </v-flex>
       </v-layout>
-      <v-layout column class="mt-3">
+      <v-layout column>
         <v-layout wrap>
-          <v-flex xs12 md6 lg4 class="px-4">
-            <h3 class="headline">Coding  <span class="blue--text">Skills</span></h3>
+          <v-flex xs12 sm6 md6 lg4 class="px-4 mt-3" order-xs2 order-lg1>
+            <h3 class="headline">Coding <span class="blue--text">Skills</span></h3>
             <div class="mt-2" v-for="(codingSkill,i) in codingSkills" :key="i">
               <span class="caption">{{codingSkill.title}}</span><br>
               <span class="subheading">{{codingSkill.text}}</span>
               <v-progress-linear :value="codingSkill.value" color="warning"></v-progress-linear>
             </div>
           </v-flex>
-          <v-flex lg4>
-            <radar-chart></radar-chart>
+          <v-flex xs12 sm12 md12 lg4 order-xs1>
+              <radar-chart></radar-chart>
           </v-flex>
-          <v-flex xs12 md6 lg4 class="px-4">
-            <h3 class="headline">Design 
+          <v-flex xs12 sm6 md6 lg4 class="px-4 mt-3" order-xs3 order-lg2>
+            <h3 class="headline">Design
               <span class="blue--text">Skills</span>
             </h3>
             <div class="mt-2" v-for="(designSkill,i) in designSkills" :key="i">
@@ -73,6 +99,9 @@
               <v-progress-linear :value="designSkill.value" color="warning"></v-progress-linear>
             </div>
           </v-flex>
+        </v-layout>
+        <v-layout justify-center class="my-3">
+         <v-btn target="_blank" :href="resume">Download Resume</v-btn>
         </v-layout>
       </v-layout>
     </v-card-title>
@@ -87,6 +116,7 @@
     },
     data() {
       return {
+        resume: require('@/assets/Resume_TonyWongSiuFai_2018.pdf'),
         experiences: [{
             title: 'Co-founder and IT Project Manager',
             company: 'Edvant Company Limited',

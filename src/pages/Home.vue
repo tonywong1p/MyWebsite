@@ -73,7 +73,7 @@
           },
           {
             icon: "email",
-            value: "tonywong1p@msn.com"
+            value: "tonywong1p89@gmail.com"
           }
         ]
       };
