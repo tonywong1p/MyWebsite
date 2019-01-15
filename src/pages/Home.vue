@@ -23,7 +23,7 @@
             <h3 class="headline">About <span class="blue--text">me</span></h3>
             <!-- <p class="body-1">Hi! My name is Tony, and I am from Hong Kong! I am now working in a IT company in HK Science Park with my nice colleagues. I was having a good time, but I have to leave since I am ready to graduate from my master degree (IT Management) and seek
               for new challenges.</p> -->
-            <p class="body-1">Welcome to my world! My name is Tony Wong, a HongKonger working in IT industry for about 4 years. I was a co-founder and IT project manager of a education software company in HKSTP. I recently left after bringing the company on the right track, and I wanna to seek for new challenges for myself!
+            <p class="body-1">Welcome to my world! My name is Tony Wong, a HongKonger working in IT industry for about 4 years. I was a co-founder and IT project manager of an education software company in HKSTP. I recently left after bringing the company on the right track, and I wanna to seek for new challenges for myself!
               </p>
               <p>
               Information technology is a thing that full of possibilities and imagination. I am so immersed to this and going to continue my career in this field as a management role in the future.

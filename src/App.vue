@@ -13,7 +13,7 @@
       <v-container>
         <v-layout wrap justify-center>
           <v-flex xs12 md10 xl8>
-            <v-toolbar class="elevation-0 transparent">
+            <v-toolbar class="elevation-0 grey lighten-2 hidden-sm-and-up" fixed scroll-off-screen>
               <v-toolbar-title>Tony <span class="blue--text">Wong</span></v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn icon class="hidden-sm-and-up" @click="drawer=true">
@@ -21,7 +21,15 @@
               </v-btn>
               <v-btn v-for="page in pages" :key="page" large class="transparent elevation-0 grey--text hidden-xs-only" :class="{'selected':$route.name==page}" @click="navigateTo(page)">{{page}}</v-btn>
             </v-toolbar>
-            <router-view/>
+            <v-toolbar class="elevation-0 transparent hidden-xs-only" prominent>
+              <v-toolbar-title>Tony <span class="blue--text">Wong</span></v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon class="hidden-sm-and-up" @click="drawer=true">
+                <v-icon>menu</v-icon>
+              </v-btn>
+              <v-btn v-for="page in pages" :key="page" large class="transparent elevation-0 grey--text hidden-xs-only" :class="{'selected':$route.name==page}" @click="navigateTo(page)">{{page}}</v-btn>
+            </v-toolbar>
+            <router-view :class="{'mt-5': $vuetify.breakpoint.xs}" />
           </v-flex>
         </v-layout>
       </v-container>

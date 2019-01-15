@@ -100,7 +100,7 @@
             </div>
           </v-flex>
         </v-layout>
-        <v-layout justify-center class="my-3">
+        <v-layout justify-center class="mb-3">
          <v-btn target="_blank" :href="resume">Download Resume</v-btn>
         </v-layout>
       </v-layout>
