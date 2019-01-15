@@ -11,7 +11,7 @@
     </div>
     <v-card-title class="px-3">
       <v-layout wrap>
-        <v-flex xs12 md6 class="mt-2">
+        <v-flex xs12 lg6 class="mt-2">
           <h3 class="headline">Experience</h3>
           <v-timeline dense>
             <v-timeline-item v-for="experience in experiences" :key="experience.id" left small color="orange lighten-2">
@@ -29,7 +29,7 @@
             </v-timeline-item>
           </v-timeline>
         </v-flex>
-        <v-flex xs12 md6 class="mt-2">
+        <v-flex xs12 lg6 class="mt-2">
           <h3 class="headline">Education</h3>
           <v-timeline dense>
             <v-timeline-item v-for="(education,index) in educations" :key="index" left small color="orange lighten-2">
@@ -50,12 +50,41 @@
           </v-timeline>
         </v-flex>
       </v-layout>
+      <v-layout column class="mt-3">
+        <v-layout wrap>
+          <v-flex xs12 md6 lg4 class="px-4">
+            <h3 class="headline">Coding  <span class="blue--text">Skills</span></h3>
+            <div class="mt-2" v-for="(codingSkill,i) in codingSkills" :key="i">
+              <span class="caption">{{codingSkill.title}}</span><br>
+              <span class="subheading">{{codingSkill.text}}</span>
+              <v-progress-linear :value="codingSkill.value" color="warning"></v-progress-linear>
+            </div>
+          </v-flex>
+          <v-flex lg4>
+            <radar-chart></radar-chart>
+          </v-flex>
+          <v-flex xs12 md6 lg4 class="px-4">
+            <h3 class="headline">Design 
+              <span class="blue--text">Skills</span>
+            </h3>
+            <div class="mt-2" v-for="(designSkill,i) in designSkills" :key="i">
+              <span class="caption">{{designSkill.title}}</span><br>
+              <span class="subheading">{{designSkill.text}}</span>
+              <v-progress-linear :value="designSkill.value" color="warning"></v-progress-linear>
+            </div>
+          </v-flex>
+        </v-layout>
+      </v-layout>
     </v-card-title>
   </v-card>
 </template>
 
 <script>
+  import radarChart from '@/components/radarChart.vue';
   export default {
+    components: {
+      radarChart
+    },
     data() {
       return {
         experiences: [{
@@ -63,45 +92,74 @@
             company: 'Edvant Company Limited',
             year: 'Jun. 2015 to Dec. 2018',
             duties: ['Managed 6 IT projects under the scope of campus-wide usage in local and south-Asian universities by cooperating with high-profile administrators.',
-             'Achieved 1.8+ million sales revenue over 2 years by selling cloud-based solutions and tailor-made software services.', 
-             'Designed and developed front-end interfaces of 5 web applications for actual production.']
+              'Achieved 1.8+ million sales revenue over 2 years by selling cloud-based solutions and tailor-made software services.',
+              'Designed and developed front-end interfaces of 5 web applications for actual production.'
+            ]
           },
           {
             title: 'Research Assistant',
             company: 'Chinese University of Hong Kong',
             year: 'Dec. 2014 to May 2015',
             duties: ['Created a hardware prototype of single-board server having local Wi-Fi network and tested using it to support the usage of web applications in internet-isolated environment.',
-             'Investigated network control technique by using local DNS, iptables, and proxy server.', ]
+              'Investigated network control technique by using local DNS, iptables, and proxy server.',
+            ]
           },
           {
             title: 'Co-founder and Tutor',
             company: 'Y&F Tutorial Center',
             year: 'Sept. 2013 to Jun. 2016',
             duties: ['Supervised 100+ students aging from primary to secondary school in acquiring better understanding of targeted weak areas within the subject.',
-             'Executed promotion campaigns to improve business exposure and admission rate by over 80%.'
-             ]
+              'Executed promotion campaigns to improve business exposure and admission rate by over 80%.'
+            ]
           }
         ],
         educations: [{
           title: 'MSc in Information and Technology Management',
           institution: 'Chinese University of Hong Kong',
-          year: 'Sept. 2017 - Mar. 2019',
+          year: 'Sept. 2017 to Mar. 2019',
           courses: ['Honored with First Class Division', 'Cumulative GPA: 3.344/4']
         }, {
           title: 'BEng in Electronic Engineering',
           institution: 'Chinese University of Hong Kong',
-          year: 'Sept. 2011 - Jul. 2015',
-          courses: ['Honored with Third Class Division', 
-          'Final Year Project: Depth reconstruction from several 2D images',
-          'Major GPA: 2.452/4 | Cumulative GPA: 2.114/4'
-
+          year: 'Sept. 2011 to Jul. 2015',
+          courses: ['Honored with Third Class Division',
+            'Final Year Project: Depth reconstruction from several 2D images',
+            'Major GPA: 2.452/4 | Cumulative GPA: 2.114/4'
+  
           ]
         }, {
           title: 'Developer Certification, JavaScript Algorithms and Data Structures',
           institution: 'FreeCodeCamp.org',
           year: 'Jun. 29, 2018',
           courses: ['Representing approximately 300 hours of course work',
-          'Intermediate Algorithm Scripting, Functional Programming, Object Oriented Programming...']
+            'Intermediate Algorithm Scripting, Functional Programming, Object Oriented Programming...'
+          ]
+        }],
+        codingSkills: [{
+          title: 'Web language',
+          text: 'HTML, CSS, JavaScript',
+          value: 85
+        }, {
+          title: 'Front-end Framworks',
+          text: 'Vue.js, Angular.js, Bootstrap, Material Design',
+          value: 95
+        }, {
+          title: 'Back-end Frameworks',
+          text: 'Node.js, Apache',
+          value: 70
+        }],
+        designSkills: [{
+          title: 'Graphic Design',
+          text: 'Adobe Illustrator, Photoshop',
+          value: 95
+        }, {
+          title: 'Audio Design',
+          text: 'Logic Pro, Adobe Audition',
+          value: 80
+        }, {
+          title: 'Video Editing',
+          text: 'Premiere Pro',
+          value: 85
         }]
       }
     }

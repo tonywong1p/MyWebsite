@@ -11,10 +11,10 @@
     </div>
     <v-card-title>
       <v-layout wrap>
-        <v-flex xs12 class="mb-3">
+        <v-flex xs12 class="mb-2">
           <v-btn v-for="(filter,index) in filters" :key="index" small :dark="selectedFilter==index" :class="{'blue':selectedFilter==index}" @click="selectedFilter = index">{{filter}}</v-btn>
         </v-flex>
-        <v-flex xs12 sm6 md4 class="pa-3" v-for="item in filteredItems" :key="item.link">
+        <v-flex xs12 sm6 lg4 class="pa-4" v-for="item in filteredItems" :key="item.link">
           <v-hover>
             <v-img slot-scope="{ hover }" :class="`elevation-${hover ? 6 : 1}`" class="thumbnail" :src="item.thumbnail" :aspect-ratio="16/9" @click="open(item)" style="cursor:pointer"></v-img>
           </v-hover>
@@ -27,14 +27,15 @@
             </v-layout>
           </v-layout>
         </v-flex>
-        <v-dialog v-model="dialog" :width="1000" :max-width="1500" height="2000" persistent scrollable>
+        <v-dialog v-model="dialog" :width="1500" height="2000" persistent scrollable>
           <v-card class="grey darken-4">
             <v-toolbar class="grey darken-4">
-              <div v-if="zoomedImage==null" class="hidden-xs-only">
-                <v-btn v-for="i in [2,3,4]" small depressed icon @click="itemPerPage=i" :key="i" class="pa-0 yellow" :class="{'grey':itemPerPage!=i}">{{i}}</v-btn>
-              </div>
+              <!-- <div v-if="zoomedImage==null" class="hidden-xs-only">
+                      <v-btn v-for="i in [2,3,4]" small depressed icon @click="itemPerPage=i" :key="i" class="pa-0 yellow" :class="{'grey':itemPerPage!=i}">{{i}}</v-btn>
+                    </div> -->
+              <v-slider class="hidden-xs-only mt-3" prepend-icon="zoom_in" v-model="imageSize" v-if="zoomedImage==null" dark :min="50" :max="380"></v-slider>
               <div v-if="zoomedImage!=null">
-                <v-btn fab small @click="zoomedImage=null">
+                <v-btn icon dark @click="zoomedImage=null">
                   <v-icon>arrow_back</v-icon>
                 </v-btn>
               </div>
@@ -43,19 +44,15 @@
                 <v-icon>clear</v-icon>
               </v-btn>
             </v-toolbar>
-            <v-card-text style="max-height:700px;" class="scrollbar">
+            <v-card-text style="height:700px" class="scrollbar" ref="scrollWrapper">
               <div class="hidden-xs-only">
-                <carousel ref="carousel" v-show="zoomedImage==null" :perPageCustom="[[0, itemPerPage]]">
-                  <slide v-for="(image,i) in selectedItem.value" :key="i" style="height:580px">
-                    <v-img :src="image" contain class="mx-2" style="height:580px">
-                      <v-btn fab small absolute @click="zoomedImage=image">
-                        <v-icon>zoom_in</v-icon>
-                      </v-btn>
-                    </v-img>
-                  </slide>
-                </carousel>
+                <div v-masonry transition-duration="0.3s" item-selector=".item" v-show="zoomedImage==null">
+                  <div v-masonry-tile class="item" v-for="(image,i) in selectedItem.value" :key="i">
+                    <img :src="image" class="ma-3" :style="{'width':imageSize+'px'}" style="cursor:pointer" @click="zoomedImage=image">
+                  </div>
+                </div>
                 <div v-if="zoomedImage!=null">
-                  <v-img :src="zoomedImage" style="height:100%"></v-img>
+                  <v-img :src="zoomedImage" contain style="height:650px;width:auto" />
                 </div>
               </div>
               <div class="hidden-sm-and-up">
@@ -73,6 +70,7 @@
   export default {
     data() {
       return {
+        imageSize: 200,
         zoomedImage: null,
         itemPerPage: 2,
         dialog: false,
@@ -174,6 +172,26 @@
               require('@/assets/evaluate_admin_5.jpg'),
             ]
           },
+          {
+            filter: 3,
+            title: 'Webpage Design Proposal',
+            caption: 'Graphic + UI/UX Design',
+            thumbnail: require('@/assets/design proposal_demo-04.jpg'),
+            type: 'image',
+            value: [
+              require('@/assets/design proposal_demo-01.jpg'),
+              require('@/assets/design proposal_demo-02.jpg'),
+              require('@/assets/design proposal_demo-03.jpg'),
+              require('@/assets/design proposal_demo-04.jpg'),
+              require('@/assets/design proposal_demo-05.jpg'),
+              require('@/assets/design proposal_demo-06.jpg'),
+              require('@/assets/design proposal_demo-07.jpg'),
+              require('@/assets/design proposal_demo-08.jpg'),
+              require('@/assets/design proposal_demo-09.jpg'),
+              require('@/assets/design proposal_demo-10.jpg'),
+              require('@/assets/design proposal_demo-11.jpg'),
+            ]
+          },
         ]
       }
     },
@@ -190,10 +208,15 @@
         return temp;
       }
     },
+    watch: {
+      imageSize: function() {
+        this.$redrawVueMasonry()
+      }
+    },
     methods: {
       closeDialog() {
         this.zoomedImage = null;
-        this.$refs.carousel.goToPage(0);
+        this.$refs.scrollWrapper.scrollTop = 0;
         this.dialog = false;
       },
       open(item) {

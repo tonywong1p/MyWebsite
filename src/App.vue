@@ -12,7 +12,7 @@
     <v-content class="grey lighten-2">
       <v-container>
         <v-layout wrap justify-center>
-          <v-flex xs12 md10 lg8>
+          <v-flex xs12 md10 xl8>
             <v-toolbar class="elevation-0 transparent">
               <v-toolbar-title>Tony <span class="blue--text">Wong</span></v-toolbar-title>
               <v-spacer></v-spacer>
