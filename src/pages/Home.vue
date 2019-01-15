@@ -57,7 +57,7 @@
           link: 'https://github.com/tonywong1p'
         }, {
           icon: 'fa-linkedin',
-          link: 'https://www.linkedin.com/in/tony-wong-siu-fai-28186761/'
+          link: 'https://www.linkedin.com/in/wong-siu-fai-tony-28186761/'
         }],
         contacts: [{
             icon: "person",
