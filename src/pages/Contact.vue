@@ -29,7 +29,7 @@
           <form action="mailto:tonywong1p89@gmail.com" method="post" enctype="text/plain">
             <v-text-field box prepend-icon="face" label="Full Name" type="text" name="fullname" required></v-text-field>
             <v-text-field box prepend-icon="email" label="Email" type="email" name="email" required></v-text-field>
-            <v-textarea box label="Default style" prepend-icon="message" name="message"></v-textarea>
+            <v-textarea box label="Tell me what you think..." prepend-icon="message" name="message"></v-textarea>
             <v-btn type="submit">Send Message</v-btn>
           </form>
         </v-flex>

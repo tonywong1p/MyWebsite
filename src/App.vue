@@ -82,6 +82,15 @@
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   
+  .gradient-2 {
+    background: #F7971E;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FFD200, #F7971E);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FFD200, #F7971E);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
   html::-webkit-scrollbar-track {
     border-radius: 10px;
     background: none;

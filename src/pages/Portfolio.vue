@@ -20,7 +20,7 @@
           <!-- <v-btn v-for="(filter,index) in filters" :key="index" small :dark="selectedFilter==index" :class="{'blue':selectedFilter==index}" @click="selectedFilter = index">{{filter}}</v-btn> -->
         </v-flex>
         <v-flex xs12 sm6 lg4 class="pa-4" v-for="item in filteredItems" :key="item.link">
-          <v-hover class="grey darken-2">
+          <v-hover class="gradient darken-2">
             <v-img slot-scope="{ hover }" :class="`elevation-${hover ? 6 : 1}`" class="thumbnail" :src="item.thumbnail" :aspect-ratio="16/9" @click="open(item)" style="cursor:pointer"></v-img>
           </v-hover>
           <v-layout class="mt-2" column align-center>
@@ -123,7 +123,7 @@
             filter: 3,
             title: 'MarineBio - Mobile app',
             caption: 'Graphic + UI/UX Design',
-            thumbnail: require('@/assets/marine_icon.png'),
+            thumbnail: require('@/assets/marine_screenshot_1.jpg'),
             type: 'image',
             value: [
               require('@/assets/marine_screenshot_1.jpg'),
@@ -146,7 +146,7 @@
             filter: 3,
             title: 'Science Mobile - Mobile app',
             caption: 'Graphic + UI/UX Design',
-            thumbnail: require('@/assets/science_icon.png'),
+            thumbnail: require('@/assets/science_cover.jpg'),
             type: 'image',
             value: [
               require('@/assets/science_screenshot_1.jpg'),

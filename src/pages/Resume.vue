@@ -87,7 +87,7 @@
             </div>
           </v-flex>
           <v-flex xs12 sm12 md12 lg4 order-xs1>
-              <radar-chart></radar-chart>
+            <radar-chart></radar-chart>
           </v-flex>
           <v-flex xs12 sm6 md6 lg4 class="px-4 mt-3" order-xs3 order-lg2>
             <h3 class="headline">Design
@@ -101,7 +101,7 @@
           </v-flex>
         </v-layout>
         <v-layout justify-center class="mb-3">
-         <v-btn target="_blank" :href="resume">Download Resume</v-btn>
+          <v-btn target="_blank" :href="resume">Download Resume</v-btn>
         </v-layout>
       </v-layout>
     </v-card-title>
@@ -168,20 +168,28 @@
         codingSkills: [{
           title: 'Web language',
           text: 'HTML, CSS, JavaScript',
-          value: 85
+          value: 95
         }, {
           title: 'Front-end Framworks',
           text: 'Vue.js, Angular.js, Bootstrap, Material Design',
-          value: 95
+          value: 90
         }, {
           title: 'Back-end Frameworks',
-          text: 'Node.js, Apache',
+          text: 'Node.js, MySQL, Microsoft SQL Server, SSMS',
+          value: 75
+        }, {
+          title: 'Others',
+          text: 'Apache, Git',
           value: 70
         }],
         designSkills: [{
           title: 'Graphic Design',
           text: 'Adobe Illustrator, Photoshop',
-          value: 95
+          value: 90
+        }, {
+          title: '3D Design',
+          text: 'Blender, AutoCAD',
+          value: 80
         }, {
           title: 'Audio Design',
           text: 'Logic Pro, Adobe Audition',
@@ -189,7 +197,7 @@
         }, {
           title: 'Video Editing',
           text: 'Premiere Pro',
-          value: 85
+          value: 75
         }]
       }
     }
