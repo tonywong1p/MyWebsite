@@ -91,7 +91,7 @@
             value: 'https://trello.com/b/9JXMPGmx/application-development-demo'
           }, {
             filter: 2,
-            title: 'SayYo - Social Platform',
+            title: 'SayYo - Social Platform (Temporarily unavailable)',
             caption: 'Web application',
             thumbnail: require('@/assets/sayyo.png'),
             type: 'web',
@@ -105,7 +105,7 @@
             value: 'http://edvant.net'
           }, {
             filter: 2,
-            title: 'Fact Checker - Online Platform',
+            title: 'Fact Checker - Online Platform (Temporarily unavailable)',
             caption: 'Web application',
             thumbnail: require('@/assets/factchecker.png'),
             type: 'web',
@@ -221,11 +221,12 @@
     methods: {
       closeDialog() {
         this.zoomedImage = null;
+        this.selectedItem = {};
         this.$refs.scrollWrapper.scrollTop = 0;
         this.dialog = false;
       },
       open(item) {
-        if (item.type == 'web') {
+        if (item.type == 'web' && item.caption!="Web application") {
           window.open(item.value, '_blank');
         }
         if (item.type == 'image') {

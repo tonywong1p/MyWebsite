@@ -121,14 +121,14 @@
             title: 'Co-founder and IT Project Manager',
             company: 'Edvant Company Limited',
             year: 'Jun. 2015 to Dec. 2018',
-            duties: ['Managed 6 IT projects under the scope of campus-wide usage in local and south-Asian universities by cooperating with high-profile administrators.',
+            duties: ['Managed 6 IT projects under the scope of campus-wide usage in local and south-Asian universities by cooperating with senior administrators.',
               'Achieved 1.8+ million sales revenue over 2 years by selling cloud-based solutions and tailor-made software services.',
               'Designed and developed front-end interfaces of 5 web applications for actual production.'
             ]
           },
           {
             title: 'Research Assistant',
-            company: 'Chinese University of Hong Kong',
+            company: 'CLEAR, Chinese University of Hong Kong',
             year: 'Dec. 2014 to May 2015',
             duties: ['Created a hardware prototype of single-board server having local Wi-Fi network and tested using it to support the usage of web applications in internet-isolated environment.',
               'Investigated network control technique by using local DNS, iptables, and proxy server.',
@@ -147,7 +147,7 @@
           title: 'MSc in Information and Technology Management',
           institution: 'Chinese University of Hong Kong',
           year: 'Sept. 2017 to Mar. 2019',
-          courses: ['Honored with First Class Division', 'Cumulative GPA: 3.344/4']
+          courses: ['Honored with Second-Upper Class Division', 'Cumulative GPA: 3.344/4']
         }, {
           title: 'BEng in Electronic Engineering',
           institution: 'Chinese University of Hong Kong',

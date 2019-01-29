@@ -27,7 +27,7 @@
               <v-btn icon class="hidden-sm-and-up" @click="drawer=true">
                 <v-icon>menu</v-icon>
               </v-btn>
-              <v-btn v-for="page in pages" :key="page" large class="transparent elevation-0 grey--text hidden-xs-only" :class="{'selected':$route.name==page}" @click="navigateTo(page)">{{page}}</v-btn>
+              <v-btn v-for="page in pages" :key="page" class="transparent elevation-0 grey--text hidden-xs-only" :class="{'selected':$route.name==page}" @click="navigateTo(page)">{{page}}</v-btn>
             </v-toolbar>
             <router-view :class="{'mt-5': $vuetify.breakpoint.xs}" />
           </v-flex>
@@ -42,7 +42,7 @@
     name: "App",
     data() {
       return {
-        pages: ['Home', 'Resume', 'Portfolio', 'Contact'],
+        pages: ['Home', 'Resume', 'Portfolio', 'Media', 'Contact'],
         drawer: false
       };
     },
