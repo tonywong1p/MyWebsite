@@ -105,11 +105,11 @@
             value: 'http://edvant.net'
           }, {
             filter: 2,
-            title: 'Fact Checker - Online Platform (Temporarily unavailable)',
+            title: 'Fact Checker - Online Platform',
             caption: 'Web application',
             thumbnail: require('@/assets/factchecker.png'),
             type: 'web',
-            value: 'http://factchecker.tonywsf.com'
+            value: 'http://factchecker.xyz'
           },
           {
             filter: 2,
@@ -226,7 +226,7 @@
         this.dialog = false;
       },
       open(item) {
-        if (item.type == 'web' && item.caption!="Web application") {
+        if (item.type == 'web' && item.value!="http://sayyo.tonywsf.com") {
           window.open(item.value, '_blank');
         }
         if (item.type == 'image') {

@@ -116,22 +116,22 @@
     },
     data() {
       return {
-        resume: require('@/assets/Resume_TonyWongSiuFai_2018.pdf'),
+        resume: require('@/assets/Resume_TonyWongSiuFai_2019.pdf'),
         experiences: [{
-            title: 'Co-founder and IT Project Manager',
+            title: 'IT Project Manager',
             company: 'Edvant Company Limited',
             year: 'Jun. 2015 to Dec. 2018',
-            duties: ['Managed 6 IT projects under the scope of campus-wide usage in local and south-Asian universities by cooperating with senior administrators.',
-              'Achieved 1.8+ million sales revenue over 2 years by selling cloud-based solutions and tailor-made software services.',
-              'Designed and developed front-end interfaces of 5 web applications for actual production.'
+            duties: ['Managed 8 cross-functional IT projects under the scope of campus-wide usage in local and south-Asian universities by collaborating with engineers, channel partners and systems integrators.',
+              'Achieved 1.8+ million sales revenue over 2 years by promoting cloud-based solutions and tailor-made software products with strong stakeholder management.',
+              'Developed front-end interfaces of web applications hands-on for software production.'
             ]
           },
           {
             title: 'Research Assistant',
             company: 'CLEAR, Chinese University of Hong Kong',
             year: 'Dec. 2014 to May 2015',
-            duties: ['Created a hardware prototype of single-board server having local Wi-Fi network and tested using it to support the usage of web applications in internet-isolated environment.',
-              'Investigated network control technique by using local DNS, iptables, and proxy server.',
+            duties: ['Created a hardware prototype of single-board server having local Wi-Fi network for supporting the usage of web applications in internet-isolated environment.',
+              'Investigated network control technique by constructing local DNS, firewall rules, and proxy server.',
             ]
           },
           {
@@ -139,7 +139,8 @@
             company: 'Y&F Tutorial Center',
             year: 'Sept. 2013 to Jun. 2016',
             duties: ['Supervised 100+ students aging from primary to secondary school in acquiring better understanding of targeted weak areas within the subject.',
-              'Executed promotion campaigns to improve business exposure and admission rate by over 80%.'
+              'Managed stakeholders including place owner, parents and tutors in day-to-day operation.',
+              'Executed promotion campaigns to improve business exposure and revenue by over 80%.'
             ]
           }
         ],
@@ -147,22 +148,26 @@
           title: 'MSc in Information and Technology Management',
           institution: 'Chinese University of Hong Kong',
           year: 'Sept. 2017 to Mar. 2019',
-          courses: ['Honored with Second-Upper Class Division', 'Cumulative GPA: 3.344/4']
+          courses: ['Honored with Second-Upper Class Division',
+            'Coursework includes: Project Management, Database & Big Data Management, Cyber Security, Information System Analysis and Auditing, IT Law, Business Intelligence',
+            'Cumulative GPA: 3.344/4'
+          ]
+        }, {
+          title: 'Developer Certification, JavaScript Algorithms and Data Structures',
+          institution: 'FreeCodeCamp.org',
+          year: 'Feb. 2017 - Jun. 2018',
+          courses: [
+            'Coursework includes: Object-oriented Programming, Functional Programming, JavaScript Algorithms Scripting and Data Structures',
+            'Representing approximately 300 hours of course work'
+          ]
         }, {
           title: 'BEng in Electronic Engineering',
           institution: 'Chinese University of Hong Kong',
           year: 'Sept. 2011 to Jul. 2015',
           courses: ['Honored with Third Class Division',
-            'Final Year Project: Depth reconstruction from several 2D images',
-            'Major GPA: 2.452/4 | Cumulative GPA: 2.114/4'
-  
-          ]
-        }, {
-          title: 'Developer Certification, JavaScript Algorithms and Data Structures',
-          institution: 'FreeCodeCamp.org',
-          year: 'Jun. 29, 2018',
-          courses: ['Representing approximately 300 hours of course work',
-            'Intermediate Algorithm Scripting, Functional Programming, Object Oriented Programming...'
+            'Coursework includes: Engineering Design, Advanced Engineering Math, Analog Integrated Circuits, Biomedical Modelling, Random Processes & DSP, Computing Using C++',
+            'Final Year Project: Depth reconstruction from several 2D images, Grade A-',
+            'Cumulative GPA: 2.114/4 | Major GPA: 2.452/4'
           ]
         }],
         codingSkills: [{
@@ -175,11 +180,11 @@
           value: 90
         }, {
           title: 'Back-end Frameworks',
-          text: 'Node.js, MySQL, Microsoft SQL Server, SSMS',
+          text: 'Node.js, Nginx, MySQL, MongoDB',
           value: 75
         }, {
           title: 'Others',
-          text: 'Apache, Git',
+          text: 'Nginx, Git, Python',
           value: 70
         }],
         designSkills: [{

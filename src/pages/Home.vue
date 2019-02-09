@@ -51,7 +51,7 @@
   export default {
     data() {
       return {
-        resume: require('@/assets/Resume_TonyWongSiuFai_2018.pdf'),
+        resume: require('@/assets/Resume_TonyWongSiuFai_2019.pdf'),
         hyperlinks: [{
           icon: 'fa-github',
           link: 'https://github.com/tonywong1p'
